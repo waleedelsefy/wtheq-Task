@@ -11,7 +11,7 @@ class Product extends Model
     protected $keyType = 'integer';
 
     protected $fillable = [
-        'name', 'slug', 'short_description', 'long_description', 'available_quantity', 'original_price', 'purchase_price', 'user_id',
+        'name', 'slug', 'description', 'available_quantity', 'image', 'is_active', 'price', 'user_id',
     ];
 
 

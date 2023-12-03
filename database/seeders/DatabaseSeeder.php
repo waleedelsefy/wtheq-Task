@@ -79,6 +79,7 @@ class DatabaseSeeder extends Seeder
             'avatar' => null,
             'email' => 'admin@test.com',
             'email_verified_at' => now(),
+            'is_active' => 1,
             'password' => bcrypt('123456'),
         ])->assignRole('admin');
 

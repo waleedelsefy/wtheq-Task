@@ -17,11 +17,9 @@ class ProductRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'short_description' => 'required',
-            'long_description' => 'required',
-            'available_quantity' => 'required|numeric',
-            'original_price' => 'required|numeric',
-            'purchase_price' => 'required|numeric',
+            'description' => 'required',
+            'is_active' => 'required',
+            'price' => 'required|numeric',
             'slug' => 'required',
         ];
     }

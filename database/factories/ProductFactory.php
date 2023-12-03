@@ -30,14 +30,13 @@ class ProductFactory extends Factory
         $productName = implode(' ', $productNames);
 
         return [
-            'user_id' => \App\Models\User::factory(), // Create a user and use its ID
+            'user_id' => \App\Models\User::factory(),
             'name' => $productName,
-            'slug' => str_replace(' ', '-', $productName), // Replace spaces with hyphens
-            'short_description' => $this->faker->sentence,
-            'long_description' => $this->faker->paragraph,
-            'available_quantity' => $this->faker->numberBetween(10, 100),
-            'original_price' => $this->faker->randomFloat(2, 10, 100),
-            'purchase_price' => $this->faker->randomFloat(2, 5, 50),
+            'slug' => str_replace(' ', '-', $productName),
+            'image' => $this->faker->imageUrl(),
+            'is_active' => true,
+            'description' => $this->faker->paragraph,
+            'price' => $this->faker->randomFloat(2, 10, 100),
         ];
     }
 }

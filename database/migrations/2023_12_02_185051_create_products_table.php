@@ -16,12 +16,11 @@ class CreateProductsTable extends Migration
             $table->string('slug', 70)->unique();
             $table->unsignedBigInteger('user_id');
             $table->string('name');
-            $table->text('short_description');
-            $table->text('long_description');
-            $table->integer('available_quantity');
-            $table->integer('sales_count')->default(0); // Set the default value to 0
-            $table->decimal('original_price', 10, 2);
-            $table->decimal('purchase_price', 10, 2);
+            $table->string('image')->nullable();
+            $table->boolean('is_active')->default(false);
+            $table->text('description');
+            $table->integer('sales_count')->default(0);
+            $table->decimal('price', 10, 2);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
