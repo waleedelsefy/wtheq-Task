@@ -7,11 +7,9 @@ use App\Http\Controllers\API\BaseController as BaseController;
 use App\Http\Resources\ProductResource;
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Validator;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\Validator;
+
 
 
 class ProductController extends BaseController
@@ -42,19 +40,22 @@ class ProductController extends BaseController
         return $this->sendResponse(new ProductResource($product), 'Product Created Successfully.');
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        try {
-            $product = Product::findOrFail($id);
+        $product = Product::where('slug', $slug)->first();
 
-            return $this->sendResponse(new ProductResource($product)    , 'Product Retrieved Successfully.');
-        } catch (ModelNotFoundException $e) {
-            return $this->sendError('Product not found.', [], 404);
+        if (!$product) {
+            return response()->json(['error' => 'Product not found'], 404);
         }
+
+        $productResource = new ProductResource($product);
+
+        return response()->json(['data' => $productResource, 'message' => 'Product retrieved successfully']);
     }
-    public function update(Request $request, $id)
+
+
+    public function update(Request $request, $slug)
     {
-        // Check if the user has permission to update a product
         if (!Auth::user()->hasPermissionTo('products.update')) {
             return $this->sendError('Unauthorized. You do not have permission to update a product.', [], 403);
         }
@@ -63,25 +64,18 @@ class ProductController extends BaseController
 
         $validator = Validator::make($input, [
             'name' => 'required',
-            // Add any other validation rules for your fields here
         ]);
 
         if ($validator->fails()) {
             return $this->sendError('Validation Error.', $validator->errors());
         }
-
-        $product = Product::find($id);
-
+        $product = Product::where('slug', $slug)->first();
         if (!$product) {
             return $this->sendError('Product not found.', [], 404);
         }
-
-        // Update only if 'name' exists in the input
         if (isset($input['name'])) {
             $product->name = $input['name'];
         }
-
-        // Update only if 'detail' exists in the input
         if (isset($input['detail'])) {
             $product->detail = $input['detail'];
         }
@@ -90,19 +84,19 @@ class ProductController extends BaseController
 
         return $this->sendResponse(new ProductResource($product), 'Product Updated Successfully.');
     }
-
-    public function destroy(Request $request, $id)
+    public function destroy(Request $request, $slug)
     {
-
-        // Check if the user has permission to update a product
         if (!Auth::user()->hasPermissionTo('products.destroy')) {
-            return $this->sendError('Unauthorized. You do not have permission to update a product.', [], 403);
+            return $this->sendError('Unauthorized. You do not have permission to delete a product.', [], 403);
         }
-        $product = Product::find($id);
 
+        $product = Product::where('slug', $slug)->first();
+
+        if (!$product) {
+            return $this->sendError('Product not found.', [], 404);
+        }
         $product->delete();
 
         return new ProductResource($product);
     }
-
 }

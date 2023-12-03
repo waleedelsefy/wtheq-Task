@@ -23,12 +23,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('register', [UserController::class, 'register']);
 Route::post('login', [UserController::class, 'login']);
 Route::get('products', [ProductController::class, 'index']);
-Route::get('products/{id}', [ProductController::class, 'show']);
+Route::get('products/{slug}', [ProductController::class, 'show']);
 
     Route::middleware('auth:api')->group(function () {
         Route::post('/products', [ProductController::class, 'store']);
-        Route::put('/products/{id}', [ProductController::class, 'update']);
-        Route::delete('/products/{id}', [ProductController::class, 'destroy']);
+        Route::put('/products/{slug}', [ProductController::class, 'update']);
+        Route::delete('/products/{slug}', [ProductController::class, 'destroy']);
     });
 
 

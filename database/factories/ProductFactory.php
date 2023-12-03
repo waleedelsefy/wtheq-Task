@@ -20,9 +20,19 @@ class ProductFactory extends Factory
 
     public function definition(): array
     {
+        $productNames = $this->faker->unique()->words(3, true);
+
+        // Ensure $productNames is an array
+        if (!is_array($productNames)) {
+            $productNames = explode(' ', $productNames);
+        }
+
+        $productName = implode(' ', $productNames);
+
         return [
             'user_id' => \App\Models\User::factory(), // Create a user and use its ID
-            'name' => $this->faker->word,
+            'name' => $productName,
+            'slug' => str_replace(' ', '-', $productName), // Replace spaces with hyphens
             'short_description' => $this->faker->sentence,
             'long_description' => $this->faker->paragraph,
             'available_quantity' => $this->faker->numberBetween(10, 100),

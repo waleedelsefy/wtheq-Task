@@ -49,37 +49,56 @@ The Test Project is an application that allows users to conduct various tests. T
     php artisan key:generate
     ```
 
-4. Install Passport:
+4. Database Migrate:
+
+    ```bash
+    php artisan migrate
+    ```
+
+
+
+5. Install Passport:
 
     ```bash
     php artisan passport:install
     ```
-5. Install passport:client 
+6. Install passport:client 
    ```bash
     php artisan passport:client --personal
     ```
-
 ## Passport Configuration in .env
-
 Copy the following lines to your .env file:
 
 ```env
 PASSPORT_PERSONAL_ACCESS_CLIENT_ID="client-id-value"
 PASSPORT_PERSONAL_ACCESS_CLIENT_SECRET="unhashed-client-secret-value"
 ```
-## Useful Links
-
-- [Repository Link](https://github.com/waleedelsefy/wtheq-Task.git)
 
 
-## Migration and Seed
 
-Make sure to run the migration and seed commands to set up the database:
 
-```bash
-php artisan migrate --seed
+
+7. Database seed:
+
+    ```bash
+    php artisan db:seed
+    ```
+
+8. Server serv:
+
+    ```bash
+    php artisan serv
+    ```
+
+## Admin credential
 
 ```admin
 email: admin@test.com
 password :123456
 ```
+
+
+## Import Postman file to Test
+
+- [postman File](Test.postman_collection.json)
+
