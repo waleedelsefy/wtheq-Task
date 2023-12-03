@@ -1,0 +1,464 @@
+{
+	"info": {
+		"_postman_id": "2c0e2404-c40c-4115-af30-ca4e4cf99a59",
+		"name": "Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19096621"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admin@example.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/login",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"admin@example.com\",\r\n  \"password\": \"newpassword\",\r\n  \"password_confirmation\": \"newpassword\",\r\n  \"token\": \"gbwwnUVxc2WkzeOrJwlQr7GdkCHxgEYyQ9V7RXX71R9hqFtKNzBum5BzMTRFNYCAdp8CyHQY5UxiA9k45woYmpr17YYR6p9rVBKe\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}password/reset",
+							"host": [
+								"{{domain}}password"
+							],
+							"path": [
+								"reset"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "trader",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "trader@test.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "c_password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/Users/walee/Downloads/aqarroundlight.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/register",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "index",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"adminpassword\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/products",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": " Bearer 6|KuhTyzUcRn0StkjQR7dV9moPsVn6oFr3D7VAL2MDf1545114",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "dh0086ne",
+									"type": "text"
+								},
+								{
+									"key": "short_description",
+									"value": "لاب توب اتش بي بافيليون X360 14-dh0086ne، انتل كور i7-8565U، شاشة لمس 14 بوصة، 1 تيرا+ 256 جيجا اس اس دي، 16 جيجا رام، كارت شاشة نفيديا جيفورس MX250 سعة 2 جيجا، ويندوز 10- فضي\n",
+									"type": "text"
+								},
+								{
+									"key": "long_description",
+									"value": "لاب توب اتش بي بافيليون X360 14-dh0086ne، انتل كور i7-8565U، شاشة لمس 14 بوصة، 1 تيرا+ 256 جيجا اس اس دي، 16 جيجا رام، كارت شاشة نفيديا جيفورس MX250 سعة 2 جيجا، ويندوز 10- فضي لاب توب اتش بي بافيليون X360 14-dh0086ne، انتل كور i7-8565U، شاشة لمس 14 بوصة، 1 تيرا+ 256 جيجا اس اس دي، 16 جيجا رام، كارت شاشة نفيديا جيفورس MX250 سعة 2 جيجا، ويندوز 10- فضي\n",
+									"type": "text"
+								},
+								{
+									"key": "available_quantity",
+									"value": "500",
+									"type": "text"
+								},
+								{
+									"key": "original_price",
+									"value": "18499",
+									"type": "text"
+								},
+								{
+									"key": "purchase_price",
+									"value": "12500",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/products/",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"products",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"adminpassword\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/products/3",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YWMxYzA1Yy01YWU5LTQzYTctOWI4Yy0zMDYxYjRiNmRiMTUiLCJqdGkiOiJhZmQ2M2MxOWZkNzFmYWQ2MDIyMjBlNDgzN2JmNWUwY2M5ZjQ1YjI0NDhiMzFmODA4NmU4ZjIyMGRiNDhjMzA4ODJjMzA3YmY3M2ZiZmMwMSIsImlhdCI6MTcwMTU2OTYyOC4wMzkxMzgsIm5iZiI6MTcwMTU2OTYyOC4wMzkxNDUsImV4cCI6MTczMzE5MjAyNy45NzgwNzYsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.n5aiJgq5eqQwSvzWkWSNR3c3ZsH9ELJpFxF-NNx9-Nzzi-DCwOjcqsbk4DFJGoM01F1X3CYHN0dGE6AvJa6l3jhogYvSLC8hKnlzbDgEkO0I_YdYmZRegCijrPIbfwmw9-wOgSVJcbz2lgeK2pjDQINxI-_4sbMStEhoBQFffg30lpPq6n3w9Oct9lm_CGsBhH2ptD0C3ktAPaVlUqa5i0P39x1QQo27y-fyRmYQqLGmSnqzuYLAOWzkIzA7PWlppdUha8cSIfrQJXYwxwswroyIdBsP7hJOrd6d1axFwMD4wyhV6XYjIrjoa_j-lRrAjYPGU5mKB5WtvWyhg_b6G1osGyrpa8rF2FqlmzpiKwKmuV2Nhzd9PzOtfZQGs5ORhZA_n3E0GJZchI-7YdJBQH7Jca0zbJ_NoCkX4ltGh-KAPRa2RUMg2rbdpvPnWGc8ignbtls32M6fN9xZVuytbSLaMJyKzpwy4kZBx6UMBwE49_qPduXn88msDgD_ZiPbsmnU6IcIyaWm0AoWzZBaSmt8mqeSjL6Db-QEmIdBnpoD-tQ_pgayc0h8QjlQ8UhkSmq6YDCI15t4QT7h-7EU2Yi4vkIAyEsVdY-W567q_w_N_9GHNHrjGpFR9BAtYJeId6hoUQhVdH0KszfGCmgTSjk3_cygUzNSc_7yOOf-9U0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "dh0086ne تعديل",
+									"type": "text"
+								},
+								{
+									"key": "short_description",
+									"value": "لاب توب اتش بي بافيليون X360 14-dh0086ne، انتل كور i7-8565U، شاشة لمس 14 بوصة، 1 تيرا+ 256 جيجا اس اس دي، 16 جيجا رام، كارت شاشة نفيديا جيفورس MX250 سعة 2 جيجا، ويندوز 10- فضي\n",
+									"type": "text"
+								},
+								{
+									"key": "long_description",
+									"value": "لاب توب اتش بي بافيليون X360 14-dh0086ne، انتل كور i7-8565U، شاشة لمس 14 بوصة، 1 تيرا+ 256 جيجا اس اس دي، 16 جيجا رام، كارت شاشة نفيديا جيفورس MX250 سعة 2 جيجا، ويندوز 10- فضي لاب توب اتش بي بافيليون X360 14-dh0086ne، انتل كور i7-8565U، شاشة لمس 14 بوصة، 1 تيرا+ 256 جيجا اس اس دي، 16 جيجا رام، كارت شاشة نفيديا جيفورس MX250 سعة 2 جيجا، ويندوز 10- فضي\n",
+									"type": "text"
+								},
+								{
+									"key": "available_quantity",
+									"value": "500",
+									"type": "text"
+								},
+								{
+									"key": "original_price",
+									"value": "18499",
+									"type": "text"
+								},
+								{
+									"key": "purchase_price",
+									"value": "12500",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/products/42",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"42"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/products/3",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Seller",
+			"item": [
+				{
+					"name": "index",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"adminpassword\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/sellers",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"sellers"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "a",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "6",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"adminpassword\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/sellers/6",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"sellers",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YWMxYzA1Yy01YWU5LTQzYTctOWI4Yy0zMDYxYjRiNmRiMTUiLCJqdGkiOiJhZmQ2M2MxOWZkNzFmYWQ2MDIyMjBlNDgzN2JmNWUwY2M5ZjQ1YjI0NDhiMzFmODA4NmU4ZjIyMGRiNDhjMzA4ODJjMzA3YmY3M2ZiZmMwMSIsImlhdCI6MTcwMTU2OTYyOC4wMzkxMzgsIm5iZiI6MTcwMTU2OTYyOC4wMzkxNDUsImV4cCI6MTczMzE5MjAyNy45NzgwNzYsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.n5aiJgq5eqQwSvzWkWSNR3c3ZsH9ELJpFxF-NNx9-Nzzi-DCwOjcqsbk4DFJGoM01F1X3CYHN0dGE6AvJa6l3jhogYvSLC8hKnlzbDgEkO0I_YdYmZRegCijrPIbfwmw9-wOgSVJcbz2lgeK2pjDQINxI-_4sbMStEhoBQFffg30lpPq6n3w9Oct9lm_CGsBhH2ptD0C3ktAPaVlUqa5i0P39x1QQo27y-fyRmYQqLGmSnqzuYLAOWzkIzA7PWlppdUha8cSIfrQJXYwxwswroyIdBsP7hJOrd6d1axFwMD4wyhV6XYjIrjoa_j-lRrAjYPGU5mKB5WtvWyhg_b6G1osGyrpa8rF2FqlmzpiKwKmuV2Nhzd9PzOtfZQGs5ORhZA_n3E0GJZchI-7YdJBQH7Jca0zbJ_NoCkX4ltGh-KAPRa2RUMg2rbdpvPnWGc8ignbtls32M6fN9xZVuytbSLaMJyKzpwy4kZBx6UMBwE49_qPduXn88msDgD_ZiPbsmnU6IcIyaWm0AoWzZBaSmt8mqeSjL6Db-QEmIdBnpoD-tQ_pgayc0h8QjlQ8UhkSmq6YDCI15t4QT7h-7EU2Yi4vkIAyEsVdY-W567q_w_N_9GHNHrjGpFR9BAtYJeId6hoUQhVdH0KszfGCmgTSjk3_cygUzNSc_7yOOf-9U0",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "domain",
+			"value": "http://127.0.0.1:8000"
+		}
+	]
+}
